@@ -10,11 +10,11 @@
       <!-- 开放时间 -->
       <div class="card-time">
         <cl-icon class="icon" :size="24" color="#32B768" name="time"></cl-icon>
-        <span class="text">开放时间: 周一至周日</span>
+        <span class="text">Opening Days: Monday to Sunday</span>
         <span class="tag" :class="{
           'tag-open': !data.disabled,
           'tag-close': data.disabled
-        }">{{ !data.disabled ? '营业中' : '休息中' }}
+        }">{{ !data.disabled ? 'Operation' : 'Resting' }}
         </span>
       </div>
       <div class="card-location">

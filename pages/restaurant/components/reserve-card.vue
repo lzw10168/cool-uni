@@ -5,7 +5,7 @@
         <img src="/static/reserve-bg.jpg" alt="" />
       </div>
       <div class="title">
-        在线预定餐位
+        Book a table online
       </div>
     </cl-card>
 

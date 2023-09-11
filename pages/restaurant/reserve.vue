@@ -11,7 +11,7 @@
 
     </div>
     <div class="res-footer">
-      <cl-button type="primary"  @click="handleReserve"  block>确定预约</cl-button>
+      <cl-button type="primary"  @click="handleReserve"  block>Confirm appointment</cl-button>
     </div>
     </cl-page>
 </template>
@@ -56,13 +56,13 @@ onShow((data) => {
 const handleReserve = () => {
   if (!form.value.tableId) {
     uni.showToast({
-      title: '请选择桌位',
+      title: 'Please select a table',
       icon: 'none'
     })
     return;
   }
   uni.showLoading({
-    title: '预约中'
+    title: 'Reservation in progress'
   })
   service.reservations.info.add({
     ...form.value,
@@ -72,7 +72,7 @@ const handleReserve = () => {
     userId: user.info.id
   }).then((res) => {
     uni.showToast({
-      title: '预约成功',
+      title: 'Appointment successful',
       icon: 'none'
     })
     router.push({

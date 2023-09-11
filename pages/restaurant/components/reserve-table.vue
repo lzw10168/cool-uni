@@ -1,7 +1,7 @@
 <template>
 	<div class="detail-desc">
 		<cl-card class="card">
-			<div class="card-title">餐厅桌位</div>
+			<div class="card-title">Restaurant table</div>
       <div class="card-container">
         <div class="card-item" v-for="item in tableList" :key="item.id">
           <TableItem @click="handleClick(item)"  :checked="item.id == form.tableId" :disabled="item.disabled" :title="item.title" :capacity="item.capacity" />

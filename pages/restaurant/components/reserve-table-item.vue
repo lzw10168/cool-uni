@@ -18,7 +18,7 @@
 			{{ title }}
 		</div>
 		<div class="footer">
-			{{ disabled ? "被预约" : "可预约" }}
+			{{ disabled ? "Reserved" : "Available" }}
 		</div>
 		<div class="center">G-{{ capacity }}</div>
 	</div>

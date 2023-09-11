@@ -92,7 +92,7 @@ export default defineComponent({
 		password: Boolean,
 		placeholder: {
 			type: String,
-			default: "请输入",
+			default: "Please enter",
 		},
 		clearable: {
 			type: Boolean,

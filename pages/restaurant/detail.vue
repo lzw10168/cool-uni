@@ -8,7 +8,7 @@
 
     </div>
     <div class="res-footer">
-      <cl-button type="primary" :disabled="resInfo.value.status == 0" @click="handleReserve"  block>立即预订</cl-button>
+      <cl-button type="primary" :disabled="resInfo.value.status == 0" @click="handleReserve"  block>Book Now</cl-button>
     </div>
     </cl-page>
 </template>

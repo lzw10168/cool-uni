@@ -27,8 +27,8 @@
 			</div>
 		</div>
 		<div class="top-head_location">
-			<cl-icon class="icon" color="#32b768" name="map-fill"></cl-icon>
-			<span>阿格拉巴德435，吉大港</span>
+			<!-- <cl-icon class="icon" color="#32b768" name="map-fill"></cl-icon>
+			<span>阿格拉巴德435，吉大港</span> -->
 		</div>
 		<div class="top-head_avatar">
 			<cl-avatar :src="avatarUrl" :size="64"></cl-avatar>

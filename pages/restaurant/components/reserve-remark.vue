@@ -3,7 +3,7 @@
 		<cl-card class="card">
 			<div class="card-title">Remark</div>
       <div class="card-container">
-        <cl-input clearable @change="handleChange" :value="form.value" />
+        <cl-input placeholder="Please Input" clearable @change="handleChange" :value="form.value" />
       </div>
 		</cl-card>
 	</div>

@@ -2,12 +2,12 @@
 	<div class="restaurant">
 		<div class="top">
 			<div class="top-left">
-				<div class="res-title">预定餐厅</div>
-				<div class="res-desc">热门餐厅，在线预约便捷就餐。</div>
+				<div class="res-title">Book a restaurant</div>
+				<div class="res-desc">Popular restaurants, make online reservations for convenient dining。</div>
 			</div>
 			<div class="top-right">
-				<span>查看详情</span>
-				<cl-icon name="arrow-right"></cl-icon>
+				<!-- <span>查看详情</span>
+				<cl-icon name="arrow-right"></cl-icon> -->
 			</div>
 		</div>
 		<div class="content">
@@ -24,7 +24,7 @@
 						{{ item.location }}
 					</div>
 					<div class="content-card_tip">
-						立即预约
+						Reservation Now
 						<cl-icon name="arrow-right"></cl-icon>
 					</div>
 				</cl-card>

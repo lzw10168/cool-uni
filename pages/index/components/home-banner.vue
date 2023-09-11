@@ -26,13 +26,13 @@ export default defineComponent({
 		const currentIndex = ref(0);
 		const urls = ref([
 			{
-				url: "/static/banner.jpg",
+				url: "/static/1.1.png",
 			},
 			{
-				url: "/static/banner.jpg",
+				url: "/static/1.2.png",
 			},
 			{
-				url: "/static/banner.jpg",
+				url: "/static/1.3.png",
 			},
 		]);
 

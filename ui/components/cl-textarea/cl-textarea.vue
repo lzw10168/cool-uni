@@ -70,7 +70,7 @@ export default defineComponent({
 		},
 		placeholder: {
 			type: String,
-			default: "请输入",
+			default: "Please enter",
 		},
 		height: {
 			type: Number,

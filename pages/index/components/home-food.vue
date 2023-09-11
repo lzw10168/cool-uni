@@ -2,12 +2,12 @@
 	<div class="food">
 		<div class="top">
 			<div class="top-left">
-				<div class="res-title">热门美食</div>
-				<div class="res-desc">今天最好的食物已就绪</div>
+				<div class="res-title">Popular food</div>
+				<div class="res-desc">Today's best food is ready</div>
 			</div>
 			<div class="top-right">
-				<span>查看详情</span>
-				<cl-icon name="arrow-right"></cl-icon>
+				<!-- <span>查看详情</span>
+				<cl-icon name="arrow-right"></cl-icon> -->
 			</div>
 		</div>
 		<div class="content">

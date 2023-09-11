@@ -9,7 +9,7 @@
           {{ data.value?.restaurantInfo.title }}
         </div>
         <div class="date">
-          预约时间:  {{ data.value.reservationDate }}    {{ timeMap[data.value.reservationTime] }}
+          Appointment:  {{ data.value.reservationDate }}    {{ timeMap[data.value.reservationTime] }}
         </div>
         <!-- <div class="date">
           备注:  {{ data.value?.remark }}
@@ -17,7 +17,7 @@
         <div class="desc">
           <div class="desc-item">
             <div class="desc-item__title">
-              人数
+              Guest
             </div>
             <div class="desc-item__value">
               {{ data.value?.numberOfGuests }}人
@@ -25,7 +25,7 @@
           </div>
           <div class="desc-item">
             <div class="desc-item__title">
-              楼层
+              Floor
             </div>
             <div class="desc-item__value">
               01
@@ -33,7 +33,7 @@
           </div>
           <div class="desc-item">
             <div class="desc-item__title">
-              席位
+              Table
             </div>
             <div class="desc-item__value">
               {{ data.value?.tableInfo.title }}

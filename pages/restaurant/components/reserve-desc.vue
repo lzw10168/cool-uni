@@ -1,9 +1,9 @@
 <template>
 	<div class="detail-desc">
 		<cl-card class="card">
-			<div class="card-title">订一张桌子</div>
+			<div class="card-title">Book a table</div>
 			<div class="card-guest border">
-				<span> 客人 </span>
+				<span> Guest </span>
 				<cl-input-number
 					v-model="form.guest"
 					@change="handleChange('guest', $event)"
@@ -14,7 +14,7 @@
 				/>
 			</div>
 			<div class="card-date border">
-				<div>日期</div>
+				<div>Date</div>
 				<DateTabs
 					:value="form.date"
 					@change="handleChange('date', $event)"
@@ -22,7 +22,7 @@
 				></DateTabs>
 			</div>
 			<div class="card-time border">
-				<div>选择时间</div>
+				<div>Time</div>
 				<div class="card-time-container">
 					<div
 						class="card-time-container_item"

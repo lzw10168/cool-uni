@@ -73,7 +73,7 @@
 				current: 0,
 				scrollLeft: 0,
 				dateItemWidth: 0,
-				weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+				weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			}
 		},
 		computed: {
@@ -112,7 +112,7 @@
 						date: date.toDate(),
 						dd: date.format('YYYY-MM-DD'),
 						d: date.format('D'),
-						w: date.isSame(dayjs(), 'day') ? '今' : (date.format('D') === '1' ? date.format('M月') : this.weekdays[date.day()])
+						w: date.isSame(dayjs(), 'day') ? 'T' : (date.format('D') === '1' ? date.format('M月') : this.weekdays[date.day()])
 					})
 				}
 				this.onCalendarConfirm({
