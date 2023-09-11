@@ -1,65 +1,46 @@
 <template>
-	<div class="food">
-		<div class="top">
-			<div class="top-left">
-				<div class="res-title">热门美食</div>
-				<div class="res-desc">今天最好的食物已就绪</div>
-			</div>
-			<div class="top-right">
-				<span>查看详情</span>
-				<cl-icon name="arrow-right"></cl-icon>
-			</div>
-		</div>
 		<div class="content">
-			<div v-for="(item, index) in list.value" :key="index">
+			<div @click="handleClick(item)" v-for="(item, index) in list.value" :key="index">
 				<div class="content-card">
-					<div class="content-card_img">
-						<img :src="item.mainImage" alt="" />
-					</div>
 					<div class="content-card_desc">
 						<div class="desc_top">
 							<div class="top_name">
-								{{ item.title }}
+								Restaurant: {{ item.restaurantTitle }}
 							</div>
 							<div class="top_price">
-								<span>A$</span>
-								<span>{{item.price}}</span>
+								<span :class="{
+                  'cl-text--success': item.status == 2,
+                  'cl-text--danger': item.status == 1,
+                  'cl-text--warning': item.status == -1,
+                }">{{statusMap[item.status]}}</span>
 							</div>
 						</div>
 						<div class="bottom">
 							<div>
 								<div class="desc_sub">
-									{{ item.description }}
+									Table: {{ item.tableTitle }}
 								</div>
-								<div class="desc_rate">
-									<cl-rate
-										v-model="item.rate"
-										:size="32"
-										disabled
-										color="#ffac48"
-										icon="cl-icon-like-fill"
-									></cl-rate>
-									<span>{{ Math.floor(item.rate).toFixed(1) }}分</span>
+								<div class="desc_sub">
+                  Guest: {{ item.numberOfGuests }} 
 								</div>
-							</div>
-							<div>
-								<!-- <cl-button :width="160" :borderRadius="20" type="success">
-									预定
-								</cl-button> -->
+                <div class="desc_sub">
+                  Date: {{ item.reservationDate }}    {{ timeMap[item.reservationTime] }}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, reactive } from "vue";
 import FormInput from "/@/components/form-input.vue";
 import { useCool, useStore } from "/@/cool";
+import { statusMap, timeMap } from '/@/cool/utils/comm';
 import { useUi } from "/@/ui";
+
 export default defineComponent({
 	setup() {
     const { service, router, mitt, storage, upload } = useCool();
@@ -68,13 +49,24 @@ export default defineComponent({
       getRes()
     })
     const getRes = () => {
-      service.goods.goods.list().then((res) => {
-        list.value = res.map(item => {
+      service.reservations.info.page({
+        userId: user.info.id,
+        size: 99999,
+        page: 1
+      }).then((res) => {
+        list.value = res.list.map(item => {
           return {
             ...item,
-            rate: 5
           }
         }) || []
+      });
+    }
+    const handleClick = (item) => {
+      router.push({
+        path: "/pages/order/detail",
+        query: {
+          id: item.id
+        },
       });
     }
 		const list = reactive<any>({
@@ -82,60 +74,36 @@ export default defineComponent({
     });
 		return {
 			list,
+      statusMap,
+      timeMap,
+      handleClick
 		};
 	},
 });
 </script>
 
 <style scoped lang="scss">
-.banner-item {
-	width: 300rpx;
-	height: 400rpx;
-	border-radius: 8px;
-}
-.food {
-  max-height: 100vh;
-  overflow: auto;
-	margin-top: 40rpx;
-}
-.top {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	&-left {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		.res-title {
-			font-size: 32rpx;
-			color: #000;
-		}
-		.res-desc {
-			font-size: 24rpx;
-			color: #6b7280;
-			margin-top: 12rpx;
-		}
-	}
-	&-right {
-		display: flex;
-		align-items: center;
-		font-size: 24rpx;
-		color: #6b7280;
-		span {
-			margin-right: 12rpx;
-		}
-	}
-}
+
+
 .content {
 	width: 100%;
 	overflow-x: hidden;
-	padding: 24rpx 0;
+	padding: 24rpx 24rpx;
 	margin-bottom: 24rpx;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
-
+  background-color: #f9fafb;
+  .cl-text--success {
+    color: #10b981;
+  }
+  .cl-text--danger {
+    color: #f59e0b;
+  }
+  .cl-text--warning {
+    color: #999;
+  }
 	&-card {
 		width: 100%;
 		height: 190rpx;
@@ -173,6 +141,7 @@ export default defineComponent({
 				.top_price {
 					font-size: 24rpx;
 					color: #ffd863;
+          font-weight: bold;
 					span {
 						margin-right: 4rpx;
 					}

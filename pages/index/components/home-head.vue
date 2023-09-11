@@ -10,12 +10,20 @@
 					'top-head_menu_list_hide': !menuShow,
 				}"
 			>
+      <div @click="handleChangeInfo" class="menu_list_item">
+        <span>Setting</span>
+      </div>
+      <div @click="handleOrderList" class="menu_list_item">
+        <span>Order List</span>
+      </div>
+      <!-- 订单中心 -->
+
 				<div @click="handleLogOut" class="menu_list_item">
 					<span>Log Out</span>
 				</div>
-				<div @click="handleChangePwd" class="menu_list_item">
+				<!-- <div @click="handleChangePwd" class="menu_list_item">
 					<span>Reset Password</span>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="top-head_location">
@@ -23,7 +31,7 @@
 			<span>阿格拉巴德435，吉大港</span>
 		</div>
 		<div class="top-head_avatar">
-			<cl-avatar src="/static/avatar.jpg" :size="64"></cl-avatar>
+			<cl-avatar :src="avatarUrl" :size="64"></cl-avatar>
 			<!-- menu -->
 		</div>
 	</div>
@@ -44,6 +52,7 @@ export default defineComponent({
 	},
 	setup() {
 		// icon show
+    const avatarUrl = ref(user.info?.avatarUrl);
 		const menuShow = ref(false);
 		const handleOpen = () => {
 			menuShow.value = true;
@@ -67,14 +76,31 @@ export default defineComponent({
 				guard: false,
 			});
 		};
+    const handleChangeInfo = () => {
+      handleClose();
+      router.push({
+        path: "/pages/user/set",
+        guard: false,
+      });
+    };
+    const handleOrderList = () => {
+      handleClose();
+      router.push({
+        path: "/pages/order/list",
+        guard: false,
+      });
+    };
 
 		return {
+      avatarUrl,
 			menuShow,
 			handleOpen,
 			handleClose,
 			handleToggle,
 			handleLogOut,
 			handleChangePwd,
+      handleChangeInfo,
+      handleOrderList
 		};
 	},
 });

@@ -18,6 +18,34 @@
         "navigationBarTitleText": "Welcome",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/restaurant/detail",
+      "style": {
+        "navigationBarTitleText": "Restaurant Detail",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/restaurant/reserve",
+      "style": {
+        "navigationBarTitleText": "Restaurant Reserve",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/order/detail",
+      "style": {
+        "navigationBarTitleText": "Reserve Detail",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/order/list",
+      "style": {
+        "navigationBarTitleText": "Order List",
+        "backgroundColor": "#ffffff"
+      }
     }
 
   ],
@@ -26,13 +54,13 @@
     "pages": [{
         "path": "set",
         "style": {
-          "navigationBarTitleText": "设置"
+          "navigationBarTitleText": "Set"
         }
       },
       {
         "path": "edit",
         "style": {
-          "navigationBarTitleText": "编辑"
+          "navigationBarTitleText": "Edit"
         }
       },
       {
@@ -58,6 +86,7 @@
 
         }
       },
+
       {
         "path": "captcha",
         "style": {

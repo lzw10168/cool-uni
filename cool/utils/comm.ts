@@ -134,3 +134,20 @@ export function uuid(): string {
 
 	return s.join("");
 }
+
+export const statusMap = {
+  1: "Reserved",
+  2: "Completed",
+  "-1": "Cancelled"
+};
+
+export const timeMap = {
+  1: "17:00",
+  2: "17:30",
+  3: "18:00",
+  4: "18:30",
+  5: "19:00",
+  6: "19:30",
+  7: "20:00",
+  8: "20:30",
+};

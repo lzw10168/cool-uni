@@ -59,7 +59,7 @@ import { useUi } from "/@/ui";
 const email = ref("");
 const type = ref(0);
 const loading = ref(true);
-const { router } = useCool();
+const { router, service } = useCool();
 const handleLogin = () => {
 	router.push({
 		path: "/pages/user/login.vue",
@@ -67,12 +67,27 @@ const handleLogin = () => {
 };
 const handleSubmit = () => {
 	// loading
-	uni.showLoading();
-	setTimeout(() => {
-		uni.hideLoading();
-		type.value = 1;
-		loading.value = false;
-	}, 500);
+	uni.showLoading({
+    title: "Loading...",
+  });
+  service.user.login.forgetPassword({
+    email: email.value,
+  }).then((res) => {
+    uni.hideLoading();
+    type.value = 1;
+    loading.value = false;
+  }).catch((err) => {
+    uni.hideLoading();
+    uni.showToast({
+      title: err.message,
+      icon: "none",
+    });
+  });
+	// setTimeout(() => {
+	// 	uni.hideLoading();
+	// 	type.value = 1;
+	// 	loading.value = false;
+	// }, 500);
 };
 const handleBack = () => {
 	type.value = 0;

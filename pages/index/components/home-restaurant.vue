@@ -11,10 +11,10 @@
 			</div>
 		</div>
 		<div class="content">
-			<div v-for="(item, index) in urls" :key="index">
-				<cl-card class="content-card">
+			<div v-for="(item, index) in list.value" :key="index">
+				<cl-card class="content-card" @click="goRes(item)">
 					<div class="content-card_img">
-						<img :src="item.url" alt="" />
+						<img :src="item.mainImage" alt="" />
 					</div>
 					<div class="content-card_title">
 						{{ item.title }}
@@ -34,34 +34,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted, reactive } from "vue";
+import FormInput from "/@/components/form-input.vue";
+import { useCool, useStore } from "/@/cool";
+import { useUi } from "/@/ui";
+
 
 export default defineComponent({
 	setup() {
-		const urls = ref([
-			{
-				url: "/static/wall.jpg",
-				title: "BAMBO OLEA FBAMBOO LEAF",
-				location: "安布罗西亚酒店&餐厅",
-			},
-			{
-				url: "/static/wall.jpg",
-				title: "BAMBOOLEAFBAMBOO LEAF",
-				location: "安布罗西亚酒店&餐厅",
-			},
-			{
-				url: "/static/wall.jpg",
-				title: "BAMBOOLEAFBAMBOO LEAF",
-				location: "安布罗西亚酒店&餐厅",
-			},
-			{
-				url: "/static/wall.jpg",
-				title: "BAMBOOLEAFBAMBOO LEAF",
-				location: "安布罗西亚酒店&餐厅",
-			},
-		]);
+    const { service, router, mitt, storage, upload } = useCool();
+    const { user } = useStore();
+    onMounted(() => {
+      getRes()
+    })
+    const goRes = (item) => {
+      router.push({
+        path: '/pages/restaurant/detail',
+        query: {
+          id: item.id
+        }
+      })
+    }
+    const getRes = () => {
+      service.restaurant.info.list().then((res) => {
+        list.value = res?.sort((a, b) => {
+          return b.score - a.score
+        }) || []
+      });
+    }
+		const list = reactive({
+      value: []
+    });
 		return {
-			urls,
+			list,
+      goRes
 		};
 	},
 });

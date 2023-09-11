@@ -1,10 +1,10 @@
 <template>
 	<cl-page>
 		<view class="page-set">
-			<cl-text value="账号" :margin="[0, 0, 20, 20]" />
+			<cl-text value="Account" :margin="[0, 0, 20, 20]" />
 
 			<cl-list :radius="16" v-if="user.info">
-				<cl-list-item label="头像" :arrow-icon="false">
+				<cl-list-item label="Avatar" :arrow-icon="false">
 					<view class="avatar">
 						<!-- #ifdef MP-WEIXIN -->
 						<button open-type="chooseAvatar" @chooseavatar="uploadAvatar">
@@ -22,10 +22,13 @@
 						<!-- #endif -->
 					</view>
 				</cl-list-item>
-				<cl-list-item label="昵称" @tap="router.push('/pages/user/edit')">
+				<cl-list-item label="Email" :arrow-icon="false" @tap="router.push('/pages/user/edit')">
+					<cl-text :value="user.info.email" />
+				</cl-list-item>
+				<cl-list-item label="Name" @tap="router.push('/pages/user/edit')">
 					<cl-text :value="user.info.nickName" />
 				</cl-list-item>
-				<cl-list-item label="手机号" :arrow-icon="false">
+				<cl-list-item label="Phone" >
 					<cl-text :value="user.info.phone" />
 				</cl-list-item>
 				<cl-list-item label="ID" :arrow-icon="false" :border="false">
@@ -33,7 +36,7 @@
 				</cl-list-item>
 			</cl-list>
 
-			<cl-text value="关于" :margin="[30, 0, 20, 20]" />
+			<!-- <cl-text value="关于" :margin="[30, 0, 20, 20]" />
 
 			<cl-list :radius="16">
 				<cl-list-item label="关于我们" @tap="router.push('/pages/user/about')">
@@ -53,11 +56,12 @@
 						<cl-text value="已经是最新版本" v-else />
 					</template>
 				</cl-list-item>
-			</cl-list>
+			</cl-list> -->
 
 			<cl-list :radius="16">
-				<cl-list-item label="切换账号" @tap="router.push('/pages/user/login')" />
-				<cl-list-item label="退出登录" :arrow-icon="false" @tap="user.logout()">
+        <cl-list-item label="Change Account" @tap="router.push('/pages/user/login')" />
+				<cl-list-item label="Reset Password" @tap="router.push('/pages/user/reset_password')" />
+				<cl-list-item label="Log Out" :arrow-icon="false" @tap="user.logout()">
 					<cl-icon :size="36" name="exit" />
 				</cl-list-item>
 			</cl-list>

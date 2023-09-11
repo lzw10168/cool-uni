@@ -3,15 +3,18 @@
 		<view class="page-user-edit">
 			<view class="form">
 				<cl-form label-position="top">
-					<cl-form-item label="昵称">
-						<cl-input v-model="form.nickName" type="nickname" :border="false" />
+					<cl-form-item label="Name">
+						<cl-input v-model="form.nickName" type="nickname" :border="true" />
+					</cl-form-item>
+					<cl-form-item label="Phone">
+						<cl-input v-model="form.phone" type="phone" :border="true" />
 					</cl-form-item>
 				</cl-form>
 			</view>
 
 			<view class="save-btn">
 				<cl-button :width="220" round type="primary" :loading="loading" @tap="save">
-					保存
+					Save
 				</cl-button>
 			</view>
 		</view>
@@ -39,7 +42,11 @@ async function save() {
 		});
 	});
 	loading.value = false;
-	ui.showTips("用户信息保存成功", router.back);
+  uni.showToast({
+    title: 'Success',
+    icon: "none",
+  });
+    // router.back()
 }
 </script>
 
