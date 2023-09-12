@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import { onShow } from '@dcloudio/uni-app';
 import { defineComponent, ref, onMounted, reactive } from "vue";
 import FormInput from "/@/components/form-input.vue";
 import { useCool, useStore } from "/@/cool";
@@ -45,7 +46,7 @@ export default defineComponent({
 	setup() {
     const { service, router, mitt, storage, upload } = useCool();
     const { user } = useStore();
-    onMounted(() => {
+    onShow(() => {
       getRes()
     })
     const getRes = () => {

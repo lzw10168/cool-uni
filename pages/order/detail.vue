@@ -51,6 +51,9 @@
         </div>
       </div>
     </div>
+    <div v-show="data.value?.status == 1" class="cancel" @click="handleCancelOrder">
+      Cancel Order
+    </div>
   </div>
 </template>
 
@@ -74,6 +77,35 @@ const getDetail = (id) => {
     id
   }).then((res) => {
     data.value = res
+  });
+}
+const handleCancelOrder = () => {
+  uni.showModal({
+    title: 'Cancel Order',
+    confirmText: 'Confirm',
+    cancelText: 'Cancel',
+    content: 'Are you sure you want to cancel this order?',
+    success: function (res) {
+      if (res.confirm) {
+        service.reservations.info.update({
+          id: data.value.id,
+          status: -1
+        }).then((res) => {
+          uni.showToast({
+            title: 'Cancel Success',
+            icon: 'none',
+            duration: 2000
+          });
+          setTimeout(() => {
+            uni.navigateBack({
+              delta: 1
+            });
+          }, 2000);
+        });
+      } else if (res.cancel) {
+        console.log('用户点击取消');
+      }
+    }
   });
 }
 
@@ -158,5 +190,14 @@ onShow(() => {
       font-weight: bold;
     }
   }
+}
+.cancel {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #898787;
+  font-size: 30rpx;
+  text-decoration: underline;
 }
 </style>

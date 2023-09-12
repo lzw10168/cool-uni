@@ -10,7 +10,7 @@
       <!-- 开放时间 -->
       <div class="card-time">
         <cl-icon class="icon" :size="24" color="#32B768" name="time"></cl-icon>
-        <span class="text">Opening Days: Monday to Sunday</span>
+        <span class="text">{{data?.openDay || 'Opening Days: Monday to Sunday'}}</span>
         <span class="tag" :class="{
           'tag-open': !data.disabled,
           'tag-close': data.disabled
